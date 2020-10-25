@@ -66,8 +66,8 @@ class SIGN:
             w.write(str+"\n")
 
     def log(self, str):
-        print(str)
         str = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))+': '+str
+        print(str)
         self.writefile(self.PATH+'/'+self.SITENAME+'.log', str)
 
     def geterror(self, e):
