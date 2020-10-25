@@ -12,9 +12,12 @@ def qd_52pojie():
     xpath = [
         '//*[@id="um"]/p[2]/a[1]'
     ]
-    dosign = sign.SIGN(sitename=sitename,login=login,afterlogin=afterlogin,signurl=signurl,xpath=xpath)
+    options = [
+        'lang=zh_CN.UTF-8'
+        '--disable-gpu',
+    ]
+    dosign = sign.SIGN(options=options,sitename=sitename,login=login,afterlogin=afterlogin,signurl=signurl,xpath=xpath)
     dosign.run()
-
 
 def run_threaded(job_func):
     job_thread = threading.Thread(target=job_func)
@@ -23,6 +26,7 @@ def run_threaded(job_func):
 if __name__ == "__main__":
     schedule.clear()
     schedule.every(1).days.at('08:00').do(run_threaded, qd_52pojie)
+    print(time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))+': 启动监控...')
 
     while True:
         schedule.run_pending()
