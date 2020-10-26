@@ -48,7 +48,8 @@ class SIGN:
             for option in options:
                 chromeOptions.add_argument(option)
         if chrome_driver:
-            self.BROWER = webdriver.Chrome(executable_path=chrome_driver, options=chromeOptions)
+            self.BROWER = webdriver.Chrome(
+                executable_path=chrome_driver, options=chromeOptions)
         else:
             self.BROWER = webdriver.Chrome(options=chromeOptions)
         WebDriverWait(self.BROWER, 10)
@@ -66,13 +67,15 @@ class SIGN:
             w.write(str+"\n")
 
     def log(self, str):
-        str = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))+': '+str
+        str = time.strftime(
+            '%Y-%m-%d %H:%M:%S', time.localtime(time.time()))+': '+self.SITENAME+' '+str
         print(str)
         self.writefile(self.PATH+'/'+self.SITENAME+'.log', str)
 
     def geterror(self, e):
         self.log(e)
-        self.BROWER.get_screenshot_as_file(self.PATH+'/'+self.SITENAME+'.error.png')
+        self.BROWER.get_screenshot_as_file(
+            self.PATH+'/'+self.SITENAME+'.error.png')
 
     def getCookies(self):
         # get login taobao cookies
@@ -120,7 +123,8 @@ class SIGN:
                 # 防止a标签新窗口打开，简单实现，复杂情况还是需要switch
                 xpath = self.BROWER.find_element_by_xpath(path)
                 if xpath.tag_name == 'a':
-                    self.BROWER.execute_script("arguments[0].removeAttribute(arguments[1]);", xpath, "target")
+                    self.BROWER.execute_script(
+                        "arguments[0].removeAttribute(arguments[1]);", xpath, "target")
                 xpath.click()
             pass
         except (NoSuchElementException, TimeoutException, WebDriverException, NoSuchWindowException) as e:
