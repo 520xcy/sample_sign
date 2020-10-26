@@ -13,7 +13,7 @@ def qd_52pojie():
         '//*[@id="um"]/p[2]/a[1]'
     ]
     options = [
-        'lang=zh_CN.UTF-8'
+        'lang=zh_CN.UTF-8',
         '--disable-gpu',
     ]
     dosign = sign.SIGN(options=options,sitename=sitename,login=login,afterlogin=afterlogin,signurl=signurl,xpath=xpath)
