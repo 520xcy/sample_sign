@@ -18,7 +18,7 @@ from selenium.common.exceptions import TimeoutException, WebDriverException, NoS
 
 
 class SIGN:
-    def __init__(self, chrome_driver=[], options='', sitename='', login='', afterlogin='', signurl='', xpath=[]):
+    def __init__(self, chrome_driver='', options=[], sitename='', login='', afterlogin='', signurl='', xpath=[]):
         self.SITENAME = sitename
         self.LOGIN = login
         self.AFTERLOGIN = afterlogin
