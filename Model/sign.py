@@ -28,6 +28,8 @@ class SIGN:
         self.PATH = self.setDir(self.BASE_PATH+'/Sites', self.SITENAME)
 
         chromeOptions = webdriver.ChromeOptions()
+        # 去自动化控制提示
+        chromeOptions.add_experimental_option("excludeSwitches", ['enable-automation'])
         # 设置编码格式
         # chromeOptions.add_argument('lang=zh_CN.UTF-8')
         # 模拟移动设备   (移动版网站的反爬虫的能力比较弱)   模拟iPhone6
